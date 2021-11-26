@@ -1,12 +1,25 @@
+/* Codded by @Ravindu Manoj
 
-const Asena = require('../events');
+Telegram: t.me/RavinduManoj
+Facebook: https://www.facebook.com/ravindu.manoj.79
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+Whats bot - Ravindu Manoj
+*/
+
+const QueenSew = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
 
+const Language = require('../language');
+const Lang = Language.getString('anime');
+ if (Config.PSW !== 'kingraviya') {
 if (Config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'anime', fromMe: true, desc: 'random anime image'}, (async (message, match) => {
+    QueenSew.newcmdaddtosew({pattern: 'animes', fromMe: true, desc: Lang.AN}, (async (message, match) => {
 
     var r_text = new Array ();
 
@@ -94,13 +107,13 @@ if (Config.WORKTYPE == 'private') {
 
     var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
 
-    await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '*Made By Pikachu*'})
+    await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '*' + Config.CPK + '*'})
 
     }));
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Asena.addCommand({pattern: 'anime', fromMe: false, desc:'random anime image '}, (async (message, match) => {
+    QueenSew.newcmdaddtosew({pattern: 'anime', fromMe: false, desc: Lang.AN}, (async (message, match) => {
 
     var r_text = new Array ();
 
@@ -188,7 +201,8 @@ else if (Config.WORKTYPE == 'public') {
 
     var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
 
-    await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '*Made By Pikachu*'})
+    await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: '*' + Config.CPK + '*'})
 
     }));
+}
 }
